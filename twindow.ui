@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.0">
+  <object class="tk.Toplevel" id="textwindow">
+    <property name="background">#24292e</property>
+    <property name="height">400</property>
+    <property name="resizable">none</property>
+    <property name="title" translatable="yes">Note</property>
+    <property name="width">300</property>
+    <child>
+      <object class="tk.Frame" id="windowframe">
+        <property name="background">#24292e</property>
+        <property name="height">400</property>
+        <property name="width">300</property>
+        <layout manager="pack">
+          <property name="propagate">False</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="tk.Frame" id="btnframe">
+            <property name="background">#24292e</property>
+            <property name="height">35</property>
+            <property name="width">300</property>
+            <layout manager="pack">
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Button" id="savebutton">
+                <property name="activebackground">#24292e</property>
+                <property name="background">#24292e</property>
+                <property name="justify">left</property>
+                <property name="relief">flat</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="propagate">False</property>
+                  <property name="side">right</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Frame" id="textframe">
+            <property name="background">#24292e</property>
+            <property name="height">360</property>
+            <property name="width">290</property>
+            <layout manager="pack">
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Text" id="text_1">
+                <property name="background">#24292e</property>
+                <property name="font">{Arial} 12 {}</property>
+                <property name="foreground">white</property>
+                <property name="height">360</property>
+                <property name="relief">flat</property>
+                <property name="width">290</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="tk.Menu" id="menu_1">
+    <child>
+      <object class="tk.Menuitem.Command" id="command_3">
+        <property name="command">saveas</property>
+        <property name="command_id_arg">false</property>
+        <property name="label" translatable="yes">Save as</property>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Menuitem.Command" id="command_4">
+        <property name="command">exit</property>
+        <property name="command_id_arg">false</property>
+        <property name="label" translatable="yes">Exit</property>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.0">
+  <object class="tk.Frame" id="mainwindow">
+    <property name="background">#24292e</property>
+    <property name="height">200</property>
+    <property name="width">400</property>
+    <layout manager="pack">
+      <property name="propagate">False</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="tk.Frame" id="titleframe">
+        <property name="background">#24292e</property>
+        <property name="height">60</property>
+        <property name="width">400</property>
+        <layout manager="pack">
+          <property name="propagate">False</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="tk.Label" id="title1">
+            <property name="background">#24292e</property>
+            <property name="font">{Noto Sans} 20 {}</property>
+            <property name="foreground">white</property>
+            <property name="justify">left</property>
+            <property name="takefocus">false</property>
+            <property name="text" translatable="yes">Notepad</property>
+            <layout manager="pack">
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="title2">
+            <property name="background">#24292e</property>
+            <property name="font">{Noto Sans} 12 {}</property>
+            <property name="foreground">white</property>
+            <property name="justify">left</property>
+            <property name="takefocus">false</property>
+            <property name="text" translatable="yes">v0.1.1</property>
+            <layout manager="pack">
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="spacer1">
+        <property name="background">white</property>
+        <property name="height">1</property>
+        <property name="width">370</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="buttonframe">
+        <property name="background">#24292e</property>
+        <property name="height">35</property>
+        <property name="width">400</property>
+        <layout manager="pack">
+          <property name="propagate">False</property>
+          <property name="side">bottom</property>
+        </layout>
+        <child>
+          <object class="tk.Button" id="plusbutton">
+            <property name="activebackground">#24292e</property>
+            <property name="anchor">n</property>
+            <property name="background">#24292e</property>
+            <property name="cursor">arrow</property>
+            <property name="relief">flat</property>
+            <property name="takefocus">false</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="propagate">True</property>
+              <property name="side">right</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Button" id="githubbutton">
+            <property name="activebackground">#24292e</property>
+            <property name="anchor">n</property>
+            <property name="background">#24292e</property>
+            <property name="cursor">arrow</property>
+            <property name="relief">flat</property>
+            <property name="takefocus">false</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="title1_2">
+            <property name="background">#24292e</property>
+            <property name="cursor">arrow</property>
+            <property name="font">{Noto Sans} 14 {}</property>
+            <property name="foreground">white</property>
+            <property name="takefocus">false</property>
+            <property name="text" translatable="yes">by zlataovce</property>
+            <layout manager="pack">
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
