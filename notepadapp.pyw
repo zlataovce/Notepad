@@ -2,6 +2,7 @@ from configparser import ConfigParser
 from os import startfile, remove
 from os.path import exists
 from tkinter.filedialog import asksaveasfilename, askopenfilename
+from tkinter.simpledialog import askstring
 
 
 class NotepadApp:
@@ -18,22 +19,34 @@ class NotepadApp:
             windowframe = tk.Frame(textwindow)
             textframe = tk.Frame(windowframe)
             text_1 = tk.Text(textframe)
+
+            def fontchange(widget):
+                confont = askstring("Notepad", "Type the font name.")
+                confsize = askstring("Notepad", "Type the font size.")
+                finallyfont = '{' + str(confont) + '} ' + str(confsize) + ' {}'
+                widget.pack_forget()
+                widget.config(font=finallyfont)
+                widget.pack()
+
             font = config['NOTEPAD']['Font']
             fontsize = config['NOTEPAD']['Size']
+            windowwidth = config['WINDOW']['Width']
+            windowheight = config['WINDOW']['Height']
+            geometrystring = str(windowwidth) + "x" + str(windowheight)
             finalfont = '{' + str(font) + '} ' + str(fontsize) + ' {}'
-            text_1.config(background=configuredbackground, font=finalfont, foreground=configuredforeground, height='36'
-                                                                                                                   '0')
-            text_1.config(relief='flat', width='290')
+            text_1.config(background=configuredbackground, font=finalfont, foreground=configuredforeground)
+            text_1.config(relief='flat', height=int(windowheight) - 5, width=int(windowwidth) - 5)
             text_1.pack(side='top')
-            textframe.config(background=configuredbackground, height='390', width='295', pady='5', padx='5')
-            # set to 360, 290 and remove padding if using btnframe
-            # else 390, 295
+            textframe.config(background=configuredbackground, height=int(windowheight) - 5, width=int(windowwidth) - 5,
+                             pady='5')
             textframe.pack(side='top')
             textframe.pack_propagate(0)
-            windowframe.config(background=configuredbackground, height='400', width='300')
+            windowframe.config(background=configuredbackground, height=int(windowheight) - 5,
+                               width=int(windowwidth) - 5)
             windowframe.pack(side='top')
             windowframe.pack_propagate(0)
-            textwindow.config(background=configuredbackground, height='400', width='300')
+            textwindow.config(background=configuredbackground, height=int(windowheight) - 5, width=int(windowwidth) - 5)
+            textwindow.geometry(geometrystring)
             textwindow.resizable(False, False)
             textwindow.title('Note')
 
@@ -66,6 +79,7 @@ class NotepadApp:
             menu_1 = tk.Menu(tkroot)
             menu_1.add('command', command=lambda: openfile(text_1), label='Open')
             menu_1.add('command', command=lambda: saveas(text_1), label='Save as')
+            menu_1.add('command', command=lambda: fontchange(text_1), label='Format')
             textwindow.config(menu=menu_1)
             textwindow.mainloop()
 
@@ -77,7 +91,7 @@ class NotepadApp:
         self.title1.pack(padx='10', side='left')
         self.title2 = tk.Label(self.titleframe)
         self.title2.config(background='#24292e', font='{Noto Sans} 12 {}', foreground='white', justify='left')
-        self.title2.config(takefocus=False, text='v0.5.2')
+        self.title2.config(takefocus=False, text='v0.6.8')
         self.title2.pack(side='left')
         self.titleframe.config(background='#24292e', height='60', width='400')
         self.titleframe.pack(side='top')
