@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from os import startfile, remove
 from os.path import exists
+from tkinter import messagebox
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter.simpledialog import askstring
 
@@ -13,8 +14,8 @@ class NotepadApp:
 
         def textapp(tkroot):
             nonlocal config
-            configuredbackground = config['NOTEPAD']['TextAppBackground']
-            configuredforeground = config['NOTEPAD']['TextColor']
+            configuredbackground = config['NOTEPAD']['DefaultTextAppBackground']
+            configuredforeground = config['NOTEPAD']['DefaultTextColor']
             textwindow = tk.Toplevel(tkroot)
             windowframe = tk.Frame(textwindow)
             textframe = tk.Frame(windowframe)
@@ -23,13 +24,17 @@ class NotepadApp:
             def fontchange(widget):
                 confont = askstring("Notepad", "Type the font name.")
                 confsize = askstring("Notepad", "Type the font size.")
+                textcolor = askstring("Notepad", "Type the text color (can be in argb format).")
                 finallyfont = '{' + str(confont) + '} ' + str(confsize) + ' {}'
                 widget.pack_forget()
-                widget.config(font=finallyfont)
+                try:
+                    widget.config(font=finallyfont, foreground=textcolor)
+                except tk.TclError:
+                    messagebox.showerror("Notepad", "Invalid choice!")
                 widget.pack()
 
-            font = config['NOTEPAD']['Font']
-            fontsize = config['NOTEPAD']['Size']
+            font = config['NOTEPAD']['DefaultFont']
+            fontsize = config['NOTEPAD']['DefaultSize']
             windowwidth = config['WINDOW']['Width']
             windowheight = config['WINDOW']['Height']
             geometrystring = str(windowwidth) + "x" + str(windowheight)
@@ -91,7 +96,7 @@ class NotepadApp:
         self.title1.pack(padx='10', side='left')
         self.title2 = tk.Label(self.titleframe)
         self.title2.config(background='#24292e', font='{Noto Sans} 12 {}', foreground='white', justify='left')
-        self.title2.config(takefocus=False, text='v0.6.8')
+        self.title2.config(takefocus=False, text='v0.6.9')
         self.title2.pack(side='left')
         self.titleframe.config(background='#24292e', height='60', width='400')
         self.titleframe.pack(side='top')
